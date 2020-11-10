@@ -14,6 +14,7 @@ function displayPhotos(){
     // Emptying for potential later feature where they get randomized eached turn.
     $('.photos').empty();
     // Loop through people array and display their image to the DOM.
+    // Shuffle is being weird when I moved the displayGuessWho, may need to change back.
     people = shuffle(people);
     for (let x of people){
         $('.photos').append(`
@@ -49,6 +50,7 @@ function select(){
 
 function displayGuessWho(){
     // Display the photos.
+    // May need to return this to onReady
     displayPhotos();
     // Get random number that will represent the index in the people array.
     let x = randomNumber(0, people.length);
