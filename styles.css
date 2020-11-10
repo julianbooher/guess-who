@@ -1,3 +1,9 @@
+header{
+    text-align: center;
+    padding: 1em;
+    background-color: rgb(31, 31, 201);
+    color
+}
 .photo-div{
     display: inline;
 }
@@ -12,4 +18,19 @@
 }
 .wrong{
     color: red;
+}
+.blue-border{
+    border: 3px solid blue;
+}
+.red-border{
+    border: 3px solid red;
+}
+.new-name{
+    margin-bottom: 5em;
+    height: 30px;
+    width: auto;
+}
+#guess-who-img{
+    width: 25%;
+    height: auto;
 }
