@@ -1,4 +1,4 @@
-// Thanks to Jim for making this array full of everyone!
+// Thanks to Jim Bird for making this array full of everyone!
 
 var people = [
   {

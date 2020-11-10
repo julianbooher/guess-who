@@ -2,11 +2,17 @@ console.log('Here are all the available people:', people);
 
 $(document).ready(onReady);
 let currentGuessWho;
+let wrongSound;
+let rightSound;
 
 function onReady(){
     console.log('in jQuery');
+    wrongSound = new sound("groans.mp3");
+    rightSound = new sound("applause3.mp3");
     displayGuessWho();
+    // Click handler to run functions when I click on an image.
     $('.photos').on('click', '.photo', select);
+    // Click handler to run functions when I restart the game.
     $('.alert-message').on('click', '.new-name', displayGuessWho);
 }
 
@@ -14,7 +20,6 @@ function displayPhotos(){
     // Emptying for potential later feature where they get randomized eached turn.
     $('.photos').empty();
     // Loop through people array and display their image to the DOM.
-    console.log(people);
     for (let x of people){
         $('.photos').append(`
             <div class="photo-div">
@@ -35,6 +40,7 @@ function select(){
         $('.alert-message').append('<h2 class="success">SUCCESS!</h2>');
         $('.alert-message').append('<br><button class="new-name">Get a New Name</button');
         $(currentImage).toggleClass('blue-border');
+        rightSound.play();
         setTimeout(function(){$(currentImage).toggleClass('blue-border')}, 2000)
     } 
     // If they don't match, do failure things!
@@ -42,9 +48,9 @@ function select(){
         $('.alert-message').empty();
         $('.alert-message').append('<h2 class="wrong">SORRY!<br> Try again.</h2>')
         $(currentImage).toggleClass('red-border');
+        wrongSound.play();
         setTimeout(function(){$(currentImage).toggleClass('red-border')}, 2000)
     }
-    console.log(github);
 }
 
 function displayGuessWho(){
@@ -53,13 +59,12 @@ function displayGuessWho(){
     // Display the photos.
     displayPhotos();
     // Get random number that will represent the index in the people array.
-    let x = randomNumber(0, people.length);
+    let x = randomNumber(0, people.length - 1);
     // If there is something in the guess-who div, empty it.
     $('.guess-who').empty();
     // If there is an alert-message and button from a successful guess, empty it.
     $('.alert-message').empty();
     // Post the name that the user should be guessing.3
-    console.log(people);
     $('.guess-who').append(`<h3>Which picture is ${people[x].name}?</h3>`)
     currentGuessWho = people[x];
     console.log('currentGuessWho:', currentGuessWho.name)
@@ -91,4 +96,20 @@ function shuffle(array) {
     }
   
     return array;
+  }
+// function to allow me to create a sound effect.
+// https://www.w3schools.com/graphics/game_sound.asp
+  function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
   }
