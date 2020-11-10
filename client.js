@@ -35,14 +35,14 @@ function select(){
         $('.alert-message').append('<h2 class="success">SUCCESS!</h2>');
         $('.alert-message').append('<br><button class="new-name">Get a New Name</button');
         $(currentImage).toggleClass('blue-border');
-        setTimeout(function(){$(currentImage).toggleClass('blue-border')}, 4000)
+        setTimeout(function(){$(currentImage).toggleClass('blue-border')}, 2000)
     } 
     // If they don't match, do failure things!
     else {
         $('.alert-message').empty();
         $('.alert-message').append('<h2 class="wrong">SORRY!<br> Try again.</h2>')
         $(currentImage).toggleClass('red-border');
-        setTimeout(function(){$(currentImage).toggleClass('red-border')}, 4000)
+        setTimeout(function(){$(currentImage).toggleClass('red-border')}, 2000)
     }
     console.log(github);
 }
