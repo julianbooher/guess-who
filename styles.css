@@ -1,3 +1,15 @@
 .photo-div{
     display: inline;
 }
+.guess-who{
+    text-align: center;
+}
+.alert-message{
+    text-align: center;
+}
+.success{
+    color: blue;
+}
+.wrong{
+    color: red;
+}
