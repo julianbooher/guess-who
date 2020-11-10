@@ -6,7 +6,6 @@ let wrongSound;
 let rightSound;
 
 function onReady(){
-    console.log('in jQuery');
     wrongSound = new sound("groans.mp3");
     rightSound = new sound("applause3.mp3");
     displayGuessWho();
