@@ -14,8 +14,7 @@ function displayPhotos(){
     // Emptying for potential later feature where they get randomized eached turn.
     $('.photos').empty();
     // Loop through people array and display their image to the DOM.
-    // Shuffle is being weird when I moved the displayGuessWho, may need to change back.
-    people = shuffle(people);
+    console.log(people);
     for (let x of people){
         $('.photos').append(`
             <div class="photo-div">
@@ -36,21 +35,22 @@ function select(){
         $('.alert-message').append('<h2 class="success">SUCCESS!</h2>');
         $('.alert-message').append('<br><button class="new-name">Get a New Name</button');
         $(currentImage).toggleClass('blue-border');
-        setTimeout(function(){$(currentImage).toggleClass('blue-border')}, 2000)
+        setTimeout(function(){$(currentImage).toggleClass('blue-border')}, 4000)
     } 
     // If they don't match, do failure things!
     else {
         $('.alert-message').empty();
         $('.alert-message').append('<h2 class="wrong">SORRY!<br> Try again.</h2>')
         $(currentImage).toggleClass('red-border');
-        setTimeout(function(){$(currentImage).toggleClass('red-border')}, 2000)
+        setTimeout(function(){$(currentImage).toggleClass('red-border')}, 4000)
     }
     console.log(github);
 }
 
 function displayGuessWho(){
+    // Randomize the people array so it shuffles every time.
+    people = shuffle(people);
     // Display the photos.
-    // May need to return this to onReady
     displayPhotos();
     // Get random number that will represent the index in the people array.
     let x = randomNumber(0, people.length);
